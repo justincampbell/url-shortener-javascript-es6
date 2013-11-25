@@ -1,0 +1,16 @@
+{
+  "name": "url-shortener-node",
+  "version": "0.0.1",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "1.14.x"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter spec"
+  }
+}
