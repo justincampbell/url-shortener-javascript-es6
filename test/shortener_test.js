@@ -8,4 +8,8 @@ describe('Shortener', function() {
     var token = shortener.shorten(url);
     assert(shortener.expand(token) === url);
   });
+
+  it('generates unique tokens', function() {
+    assert(shortener.shorten(url) !== shortener.shorten(url));
+  });
 });
