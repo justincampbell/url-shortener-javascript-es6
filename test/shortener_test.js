@@ -1,10 +1,11 @@
 var assert = require("assert");
 var shortener = require("../shortener");
 
-describe('Shortener', function(){
-  describe('#foo', function(){
-    it('returns 1', function(){
-      assert.equal(1, shortener.foo());
-    })
-  })
-})
+var url = "http://justincampbell.me";
+
+describe('Shortener', function() {
+  it('shortens and expands a url', function() {
+    var token = shortener.shorten(url);
+    assert(shortener.expand(token) === url);
+  });
+});

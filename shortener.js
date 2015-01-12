@@ -1,3 +1,13 @@
 module.exports = {
-  foo: function() { return 1; }
+  urls: {},
+
+  shorten: function(url) {
+    token = "123";
+    this.urls[token] = url;
+    return token;
+  },
+
+  expand: function(token) {
+    return this.urls[token];
+  }
 }
