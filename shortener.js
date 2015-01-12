@@ -14,6 +14,6 @@ module.exports = {
 
   generateToken: function() {
     this.id += 1;
-    return this.id;
+    return this.id.toString();
   }
-}
+};

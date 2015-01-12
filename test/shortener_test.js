@@ -12,4 +12,9 @@ describe('Shortener', function() {
   it('generates unique tokens', function() {
     assert(shortener.shorten(url) !== shortener.shorten(url));
   });
+
+  it('generates tokens as strings', function() {
+    var token = shortener.shorten(url);
+    assert(typeof(token) === 'string');
+  });
 });
