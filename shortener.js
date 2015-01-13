@@ -1,5 +1,4 @@
-function *tokenGenerator() {
-  let id = 0;
+function* tokenGenerator(id = 0) {
   while (true) {
     id += 1;
     yield id.toString();
