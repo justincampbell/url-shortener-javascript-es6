@@ -1,11 +1,11 @@
-var assert = require("assert");
-var shortener = require("../shortener");
+import assert from 'assert';
+import shortener from '../shortener';
 
-var url = "http://justincampbell.me";
+const url = "http://justincampbell.me";
 
 describe('Shortener', function() {
   it('shortens and expands a url', function() {
-    var token = shortener.shorten(url);
+    let token = shortener.shorten(url);
     assert(shortener.expand(token) === url);
   });
 
@@ -14,7 +14,7 @@ describe('Shortener', function() {
   });
 
   it('generates tokens as strings', function() {
-    var token = shortener.shorten(url);
+    let token = shortener.shorten(url);
     assert(typeof(token) === 'string');
   });
 });

@@ -1,25 +1,25 @@
-var express = require('express');
-var shortener = require('./shortener');
+import express from 'express';
+import shortener from './shortener';
 
-var app = express();
-var port = process.env.PORT || 3000;
+const app = express();
+const port = process.env.PORT || 3000;
 
 app.get('/', function (req, res, next) {
   res.redirect('https://github.com/justincampbell/url-shorteners');
 });
 
 app.get('/shorten', function (req, res, next) {
-  var url = req.query.url;
+  let { url } = req.query;
 
   if (!url) { return res.sendStatus(400); }
 
-  var token = shortener.shorten(url);
+  let token = shortener.shorten(url);
   res.status(201).send('/' + token);
 });
 
 app.get('/:token', function (req, res, next) {
-  var token = req.params.token;
-  var url = shortener.expand(token);
+  let { token } = req.params;
+  let url = shortener.expand(token);
 
   if (!url) { return res.sendStatus(404); }
 
@@ -29,4 +29,4 @@ app.get('/:token', function (req, res, next) {
 app.listen(port);
 console.log('Listening on ' + port);
 
-module.exports = { app: app };
+export { app };

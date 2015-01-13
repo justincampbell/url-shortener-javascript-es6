@@ -1,8 +1,8 @@
-var assert = require('assert');
-var request = require('supertest');
+import assert from 'assert';
+import request from 'supertest';
+import { app } from '../web';
 
-var app = require('../web').app;
-var url = 'http://justincampbell.me';
+const url = 'http://justincampbell.me';
 
 describe('GET /', function() {
   it('redirects to the home page', function(done) {
@@ -39,7 +39,7 @@ describe('GET /:token', function() {
     request(app)
       .get('/shorten?url=' + url)
       .end(function(err, res) {
-        var token = res.text;
+        let { text: token } = res;
 
         request(app)
           .get(token)

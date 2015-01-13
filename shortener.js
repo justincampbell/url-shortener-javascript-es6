@@ -1,19 +1,22 @@
-module.exports = {
-  id: 0,
-  urls: {},
+function *tokenGenerator() {
+  let id = 0;
+  while (true) {
+    id += 1;
+    yield id.toString();
+  };
+}
 
-  shorten: function(url) {
-    token = this.generateToken();
-    this.urls[token] = url;
+export default {
+  tokenGenerator: tokenGenerator(),
+  urls: new Map(),
+
+  shorten(url) {
+    let { value: token } = this.tokenGenerator.next();
+    this.urls.set(token, url);
     return token;
   },
 
-  expand: function(token) {
-    return this.urls[token];
-  },
-
-  generateToken: function() {
-    this.id += 1;
-    return this.id.toString();
+  expand(token) {
+    return this.urls.get(token);
   }
 };
