@@ -33,3 +33,24 @@ describe('GET /shorten', function() {
       .expect(400, done);
   });
 });
+
+describe('GET /:token', function() {
+  it('redirects to the url for a valid token', function(done) {
+    request(app)
+      .get('/shorten?url=' + url)
+      .end(function(err, res) {
+        var token = res.text;
+
+        request(app)
+          .get(token)
+          .expect('Location', url)
+          .expect(302, done);
+      });
+  });
+
+  it('returns missing when given a nonexistent token', function(done) {
+    request(app)
+      .get('/12345')
+      .expect(404, done);
+  });
+});

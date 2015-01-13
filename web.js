@@ -16,6 +16,14 @@ app.get('/shorten', function (req, res, next) {
   res.status(201).send('/' + token);
 });
 
+app.get('/:token', function (req, res, next) {
+  var token = req.params.token;
+  var url = shortener.expand(token);
+
+  if (!url) { return res.sendStatus(404); }
+
+  res.redirect(url);
+});
 
 app.listen(process.env.PORT || 3000);
 
