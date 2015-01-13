@@ -1,5 +1,5 @@
 {
-  "name": "url-shortener-node",
+  "name": "url-shortener-javascript",
   "version": "0.0.1",
   "dependencies": {
     "express": "4.10.x"
