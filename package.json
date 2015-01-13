@@ -2,9 +2,11 @@
   "name": "url-shortener-node",
   "version": "0.0.1",
   "dependencies": {
+    "express": "4.10.x"
   },
   "devDependencies": {
-    "mocha": "1.14.x"
+    "mocha": "1.14.x",
+    "supertest": "0.15.x"
   },
   "engines": {
     "node": "0.10.x",
