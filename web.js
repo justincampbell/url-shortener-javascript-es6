@@ -2,6 +2,7 @@ var express = require('express');
 var shortener = require('./shortener');
 
 var app = express();
+var port = process.env.PORT || 3000;
 
 app.get('/', function (req, res, next) {
   res.redirect('https://github.com/justincampbell/url-shorteners');
@@ -25,6 +26,7 @@ app.get('/:token', function (req, res, next) {
   res.redirect(url);
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(port);
+console.log('Listening on ' + port);
 
 module.exports = { app: app };
